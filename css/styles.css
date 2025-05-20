@@ -1,3 +1,20 @@
-body{
-  background-color: blue;
+* {
+  font-family: Arial;
+  background-color: #212121;
+  color: whitesmoke;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  
+}
+
+h3 {
+  background-color: #47638f
+}
+
+li {
+  padding: 5px;
 }
