@@ -7,8 +7,11 @@
 body {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 40px;
-  
+  width: 60%;  
+  padding-left: 20%;
+  padding-top: 40px;
 }
 
 h3 {
@@ -17,4 +20,8 @@ h3 {
 
 li {
   padding: 5px;
+}
+
+html {
+  font-size: 125%;
 }
