@@ -12,6 +12,9 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Debug
+      run: ls -R .
+
     - name: Upload to Azure Storage with AAD
       run: |
         az storage blob upload-batch \
