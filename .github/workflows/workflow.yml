@@ -22,3 +22,10 @@ jobs:
           --source . \
           --account-name resumesitestorage3072 \
           --auth-mode login
+    - name: List blobs after upload
+      run: |
+        az storage blob list \
+          --container-name '$web' \
+          --account-name resumesitestorage3072 \
+          --auth-mode login \
+          --output table
