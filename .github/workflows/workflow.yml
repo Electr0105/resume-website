@@ -1,26 +1,30 @@
-on: [push]
+name: Blob storage website CI
 
-name: Run Azure Login With a Service Principal Secret
+on:
+    push:
+        branches: [ main ]
 
 jobs:
-
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-
+    - uses: actions/checkout@v3
     - uses: azure/login@v2
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Upload to Azure Storage with AAD
+    - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch \
-          --destination '$web' \
-          --source . \
-          --account-name resumesitestorage3072 \
-          --auth-mode login
+            az storage blob upload-batch --account-name -resumesitestorage3072 -auth-mode key -d '$web' -s ./root
+    # - name: Purge CDN endpoint
+      # uses: azure/CLI@v1
+      # with:
+      #   inlineScript: |
+      #      az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
+
+  # Azure logout
     - name: logout
       run: |
             az logout
