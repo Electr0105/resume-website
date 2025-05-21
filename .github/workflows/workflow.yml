@@ -19,6 +19,6 @@ jobs:
       run: |
         az storage blob upload-batch \
           --destination '$web' \
-          --source './root' \
+          --source . \
           --account-name resumesitestorage3072 \
 
