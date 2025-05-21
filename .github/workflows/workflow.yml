@@ -12,20 +12,16 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Debug
-      run: ls -R .
-
     - name: Upload to Azure Storage with AAD
-      run: |
-        az storage blob upload-batch \
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob upload-batch \
           --destination '$web' \
           --source . \
           --account-name resumesitestorage3072 \
           --auth-mode login
-    - name: List blobs after upload
+    - name: logout
       run: |
-        az storage blob list \
-          --container-name '$web' \
-          --account-name resumesitestorage3072 \
-          --auth-mode login \
-          --output table
+            az logout
+      if: always()
