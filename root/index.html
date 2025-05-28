@@ -6,14 +6,14 @@
     <title>Resume</title>
     <link href="styles.css" rel="stylesheet" type="text/css"/>
     <script src="scripts.js"></script>
-    <script>
-      countVisitors();
-    </script>
   </head>
   <body>
     <div id="personal-info">
-      <h4>Number of visitors: INT</h4>
+      <h4 id="visitorcount">Number of visitors: INT</h4>
       <h2>Jackson Gleeson</h2>
+      <script>
+        window.addEventListener("DOMContentLoaded", countVisitors);
+      </script>
       <h3>Assistant IT Manager</h3>
       <div>
         <h4>jackson.gleeson@gmail.com</h4>
