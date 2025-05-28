@@ -5,104 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resume</title>
     <link href="styles.css" rel="stylesheet" type="text/css"/>
-    <script src="scripts.js"</script>
+    <script src="scripts.js"></script>
   </head>
   <body>
-    <div id="personal-info">
-      <h4 id="visitorcount">Loading...</h4>
-      <h2>Jackson Gleeson</h2>
-      <h3>Assistant IT Manager</h3>
-      <div>
-        <h4>jackson.gleeson@gmail.com</h4>
-        <h4>(+61) 0499919276</h4>
-        <h4>Melbourne, VIC</h4>
-        <h4>LinkedIn</h4>
+    <nav class="navbar">
+      <a href="#experience-header">About Me</a>
+      <a href="#skills-header">Skills</a>
+      <a href="#experience-header">Experience</a>
+      <a href="#projects-header">Projects</a>
+      <a href="#contact-header">Contact</a>
+      <a href="#resume-header">Traditional Resume</a>
+    </nav>
+    <div class="container intro">
+      <p>Hi! I'm Jackson Gleeson</p>
+      <p>Welcome to my personal site and resume. I'm a Systems Administrator and aspiring Cloud Engineer based in Melbourne</p>
+      <p>I enjoy building and automating systems to streamline my day-to-day.</p>
+    </div>  
+
+    <div>
+      <p>Skills</p>
+      <div class="skills-grid">
+        <span><img src="demo-icon.png" alt="">M365 Administraion</span>
+        <span><img src="demo-icon.png" alt="">Python Development<span>
+        <span><img src="demo-icon.png" alt="">IT Systems and Support<span>
+        <span><img src="demo-icon.png" alt="">Endpoint Management (Intune)<span>
+        <span><img src="demo-icon.png" alt="">Azure Administration<span>
       </div>
     </div>
-    <div class="education container">
-      <h3>EDUCATION</h3>
-      <p>Graduate Certificate of AI</p>
-      <p><b>La Trobe University</b></p>
-      <p>Fev 2023 - Aug 2024</p>
-      <p>Bundoora, Vic</p>
-      <p>Bachelor of Computer Science</p>
-      <p><b>La Trobe Univerity</b></p>
-      <p>Fev 2020 - Nov 2022</p>
-      <p>Bundoora, Vic</p>
-    </div>
-    <div class="skills container">
-      <h3>SKILLS</h3>
-      <ul>
-        <li>M365 Administration</li>
-        <li>Python</li>
-        <li>IT Support</li>
-        <li>End Point Management and Support (Intune)</li>
-        <li>Azure Administration</li>
-      </ul>
-    </div>
-    <div class="certificates container">
-      <h3>CERTIFICATES</h3>
-      <ul>
-        <li>Microsoft Certified: Azure Administration Associate (AZ-104)</li>
-        <li>Microsoft Certified: Azure Fundamentals (AZ-900)</li>
-        <li>Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)</li>
-        <li>Certified in Cybersecurity (CC), ISC2</li>
-      </ul>
-    </div>
-    <div class="experience container">
-      <h3>EXPERIENCE</h3>
-      <h4>Amtek Cororation Pty Ltd</h4>
-      <h4>Assistant IT Manager</h4>
-      <p>Oct 2024 - Present</p>
-      <p>Preston, Melbourne</p>
-      <ul>
-        <li>Coordinated with internal stakeholders and external contractors to ensure the smooth and timely delivery of software, projects and integrations</li>
-        <li>Deployed company-wide security initiatives to ensure user, endpoint and resource protection, reducing cybersecurity incidents by 75%</li>
-        <li>Deployed and tracked Microsoft Conditional Access policies and MFA enforcement rollout, company-wide</li>
-        <li>Oversaw several local servers, both Windows and Linux, providing security patching, management and uptime compliance</li>
-        <li>Collaborated with leadership to support business growth and objectives, providing expertise and IT solutions</li>
-        <li>Created a complete endpoint and device registry, ensuring an up-to-date database of which departments and users owned what. This translated to clear auditing advantages as device usage and history become easily trackable and observable</li>
-      </ul>
-      <h4>Amtek Cororation Pty Ltd</h4>
-      <h4>IT Systems Administrator</h4>
-      <p>Feb 2023 - Oct 2024</p>
-      <p>Preston, Melbourne</p>
-      <ul>
-        <li>Provided end-user support for level 1, 2 and 3 issues, reducing incident response time by 50% and increasing company IT satisfaction to 96%</li>
-        <li>Managed and optimised the company Microsoft 365 tenant, driving dynamic group policies to reduce human error and resource wait times for staff</li>
-        <li>Led developments to device enrolment, security and management through Microsoft Intune, improving endpoint compliance to 95% and reducing device turnaround by 30 minutes</li>
-        <li>Managed the company SharePoint, Teams and Exchange portals, ensuring data compliance, staff collaboration and ‘best practice’ configurations</li>
-        <li>Onboarded and trained new staff in hardware, software and IT policy</li>
-      </ul>
-    </div>
-    <div class="projects container">
-      <h3>KEY PROJECTS</h3>
-      <h4>New Soft Phone Project Management and Migration</h4>
-      <ul>
-        <li>Oversaw delivery and development of a new soft phone system, working with external contracts to ensure timely delivery</li>
-        <li>Engaged with all levels of stakeholder, from users to senior management, to understand usability needs and reporting requirements</li>
-        <li>Hosted group and 1-on-1 training for end users, walking through the new software</li>
-        <li>Managed user and system migration, ensuring a seamless cutover, resulting in 0 downtime</li>
-        <li>Delivered new features and functionality to support the helpdesk department's SLA and contractual requirements</li>
-      </ul>
-      <h4>Fibre Installation and Network Upgrade for Major Contract</h4>
-      <ul>
-        <li>Led technical coordination and on-site management for the installation of a new fibre connection, supporting a server staging area for a major client</li>
-        <li>Acted a primary point of contact for internal and external (Telstra and NBN) contacts, covering business and technical requirements with both account managers and network technicians</li>
-        <li>Installed, monitored and tested new network switch and fibre connection, supporting our Business Continuity and Disaster Recover plan</li>
-      </ul>
-      <h4>Internal Tooling Development and Pipeline Improvements</h4>
-      <ul>
-        <li>Coordinated with internal stakeholders to identify business needs, provided a software (Python) driven solution</li>
-        <li>Created custom new employee creation tools to reduce user onboarding time from 1 hour to 5–10 minutes</li>
-        <li>Converted legacy internal tools, a client data processing application, to a modern framework, improving maintainability, usability and reducing downtime by 80%</li>
-        <li>Containerised multiple applications, ensuring ease of deployment and disaster recovery</li>
-      </ul>
-    </div>
-    <script>
-  countVisitors();
-</script>
-  </body>
-  <footer>
-  </footer>
 </html>
