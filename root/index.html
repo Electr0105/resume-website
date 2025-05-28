@@ -11,9 +11,6 @@
     <div id="personal-info">
       <h4 id="visitorcount">Loading...</h4>
       <h2>Jackson Gleeson</h2>
-      <script>
-        window.addEventListener("DOMContentLoaded", countVisitors);
-      </script>
       <h3>Assistant IT Manager</h3>
       <div>
         <h4>jackson.gleeson@gmail.com</h4>
@@ -102,6 +99,29 @@
         <li>Containerised multiple applications, ensuring ease of deployment and disaster recovery</li>
       </ul>
     </div>
+    <script>
+  const countVisitors = async () => {
+    try {
+      const response = await fetch('https://resume-functions.azurewebsites.net/api/visitorcount');
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      document.getElementById("visitorcount").textContent = 
+        "Number of site visitors: " + (data?.count ?? "Unavailable");
+
+    } catch (error) {
+      console.error("Failed to fetch visitor count:", error);
+      document.getElementById("visitorcount").textContent = 
+        "Number of site visitors: Unavailable";
+    }
+  };
+
+  // Run the function once the DOM is ready
+  countVisitors();
+</script>
   </body>
   <footer>
   </footer>
