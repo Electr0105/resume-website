@@ -1,4 +1,4 @@
-const countVisitors = async () => {
+const ccountVisitors = async () => {
   try {
     const response = await fetch('https://resume-functions.azurewebsites.net/api/visitorcount');
 
