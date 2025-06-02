@@ -1,3 +1,4 @@
+# .github/workflows/deploy.yml
 name: Deploy Static Site to Azure Storage
 
 on:
@@ -13,20 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js (optional if you use a JS build step)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Build the static site
-        run: |
-          npm ci
-          npm run build
-
-      - name: Upload to Azure Storage
+      - name: Upload static files to Azure Storage ($web)
         uses: azure/CLI@v1
         with:
           azcliversion: latest
@@ -35,6 +26,6 @@ jobs:
               --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
               --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }} \
               --destination \$web \
-              --source ./dist \
+              --source ./site \
               --overwrite
 
