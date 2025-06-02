@@ -26,6 +26,6 @@ jobs:
               --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
               --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }} \
               --destination \$web \
-              --source ./site \
+              --source ./root \
               --overwrite
 
