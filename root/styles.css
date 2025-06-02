@@ -1,27 +1,110 @@
 * {
-  font-family: Arial;
-  background-color: #212121;
-  color: whitesmoke;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f1f1f1;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  font-size: 1.1rem;
+  background-color: #1e1e1e;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  width: 60%;  
-  padding-left: 20%;
-  padding-top: 40px;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
 }
 
-h3 {
-  background-color: #47638f
+section {
+  width: 100%;
+  padding: 40px;
+  background-color: #2b2b2b;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-li {
-  padding: 5px;
+.section-title {
+  color: #4aa8ff;
+  border-bottom: 1px solid #4aa8ff;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
 }
 
-html {
-  font-size: 120%;
+#personal-info {
+  margin-bottom: 20px;
+  text-align: center;
+}
+#personal-info h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.3em;
+}
+#personal-info h3 {
+  font-weight: normal;
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+#personal-info h4 {
+  margin: 0.2em 0;
+  font-size: 1.1rem;
+}
+#personal-info a {
+  color: #4aa8ff;
+  text-decoration: none;
+}
+#personal-info a:hover {
+  text-decoration: underline;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.education-sub {
+  background-color: #383838;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.skills ul,
+.certificates ul {
+  list-style-type: disc;
+  padding-left: 25px;
+  line-height: 1.6;
+}
+
+.experience,
+.projects {
+  width: 100%;
+}
+.experience h4,
+.projects h4 {
+  margin-bottom: 5px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.experience ul,
+.projects ul {
+  list-style-type: disc;
+  padding-left: 25px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+  body {
+    padding: 30px 10px;
+  }
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.container{
+  margin-bottom: 20px
 }
