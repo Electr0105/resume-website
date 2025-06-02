@@ -1,31 +1,40 @@
-name: CI with OpenID Connect
+name: Deploy Static Site to Azure Storage
 
 on:
-    push:
-        branches: [ main ]
+  push:
+    branches:
+      - main
 
 permissions:
-      id-token: write
-      contents: read
+  contents: read
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: azure/login@v2
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Upload to blob storage
-      uses: azure/CLI@v1
-      with:
-        inlineScript: |
-            az storage blob upload-batch --account-name resumesitedeployment --auth-mode key -d '$web' -s .
-    - name: Purge CDN endpoint
-      uses: azure/CLI@v1
-      with:
-        inlineScript: |
-           az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (optional if you use a JS build step)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build the static site
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload to Azure Storage
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az storage blob upload-batch \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
+              --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }} \
+              --destination \$web \
+              --source ./dist \
+              --overwrite
+
