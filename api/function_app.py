@@ -1,8 +1,9 @@
-import logging
 import azure.functions as func
-import azurefunctions.extensions.bindings.cosmosdb as cosmos
+import datetime
+import json
+import logging
 
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+app = func.FunctionApp()
 
 @app.route(route="cosmos")
 @app.cosmos_db_input(arg_name="client",
@@ -14,4 +15,4 @@ def get_docs(req: func.HttpRequest, client: cosmos.CosmosClient):
     for db in databases:
         logging.info(f"Found database with ID: {db.get('id')}")
 
-    return "ok"
+
