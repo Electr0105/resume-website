@@ -1,18 +1,22 @@
 import azure.functions as func
-import logging
-import azure.functions as func
-import azurefunctions.extensions.bindings.cosmosdb as cosmos
 
-app = func.FunctionApp()
+app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
-@app.route(route="cosmos")
-@app.cosmos_db_input(arg_name="client",
+@app.route(route="visitorcount")
+@app.cosmos_db_input(arg_name="container",
                      connection="CosmosDBConnection",
-                     database_name=None,
-                     container_name=None)
-def get_docs(req: func.HttpRequest, client: cosmos.CosmosClient):
-    databases = client.list_databases()
-    for db in databases:
-        logging.info(f"Found database with ID: {db.get('id')}")
+                     database_name="resume-db",
+                     container_name="resume-container")
+@app.cosmos_db_output(arg_name="container2",
+                     connection="CosmosDBConnection",
+                     database_name="resume-db",
+                     container_name="resume-container")
+def increment_visitor_count(req: func.HttpRequest, container: func.DocumentList, container2: func.Out[func.Document]):
+    document = container[0]
+    current_value = document['value']
+    document['value'] = current_value + 1
+    container2.set(document)
+
+    return str(current_value)
 
 
