@@ -12,11 +12,17 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
                      database_name="resume-db",
                      container_name="resume-container")
 def increment_visitor_count(req: func.HttpRequest, container: func.DocumentList, container2: func.Out[func.Document]):
+    if not container:
+        return func.HttpResponse("No document found", status_code=404)
+
     document = container[0]
-    current_value = document['value']
-    document['value'] = current_value + 1
-    container2.set(document)
 
-    return str(current_value)
-
-
+    try:
+        current_value = document['value']
+        document['value'] = current_value + 1
+        container2.set(document)
+        return func.HttpResponse(str(document['value']), status_code=200)
+    except KeyError:
+        return func.HttpResponse("Missing 'value' field in document", status_code=400)
+    except Exception as e:
+        return func.HttpResponse(f"Internal Server Error: {str(e)}", status_code=500)
